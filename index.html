@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Validator</title>
+         <script src="./assets/validator/validator.js"></script>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            input {
+                display: block;
+            }
+        </style>
+        <link rel="stylesheet" href="./assets/validator/validator.css">
+       
+        </script>
+    </head>
+    <body>
+        <section >
+            <form id="myForm">
+            <label for="email">email</label>
+            <input type="text" name="email" id="email">
+            <label for="phone">phone</label>
+            <input type="text" name="phone" iphone">
+            <br>
+           
+            <button type="reset">reset</button>
+            </form>
+        </section>
+        
+        <script>
+            // это  эти паттерны пишет пользователь нашего валидатора
+        const valid = new Validator(
+            {
+                id: 'myForm',
+                pattern: {
+                    phone: /ˆ\+380\w{9}/
+                }, 
+                method: {
+                    //какие методы валидации к нему будут приеняться
+                    'email': [
+                        //не пустой ли?
+                       ['notEmpty'],
+                       // к нему применяется патерн емаил
+                       ['pattern','email']
+                    ],
+                     'phone': [
+                        //не пустой ли?
+                       ['notEmpty'],
+                       // к нему применяется патерн емаил
+                       ['pattern','phone']
+                    ]
+                }
+            }
+        )
+        </script>
+        
+    </body>
+</html>
